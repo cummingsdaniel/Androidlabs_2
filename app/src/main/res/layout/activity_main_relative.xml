@@ -58,7 +58,7 @@
         android:layout_gravity="fill"
         android:hint="@string/EditText1"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentBottom="true"
+        android:layout_below="@id/imageButton"
 
         android:inputType="textPersonName" />
 </RelativeLayout>
