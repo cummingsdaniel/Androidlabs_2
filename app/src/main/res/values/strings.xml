@@ -1,10 +1,8 @@
 <resources>
-    <string name="app_name">Android labs_2</string>
-    <string name="enter_email">Look at my GUI</string>
-    <string name="input_email">CLICK HERE</string>
-    <string name="enter_password">Check this out!</string>
-    <string name="input_password">Switch on / off</string>
-    <string name="ButtonText">Type here</string>
-
-
+    <string name="app_name">Android labs_3</string>
+    <string name="enter_email">Enter your email address</string>
+    <string name="input_email">Type email here</string>
+    <string name="enter_password">Type your password</string>
+    <string name="input_password"></string>
+    <string name="ButtonText">Login</string>
 </resources>
