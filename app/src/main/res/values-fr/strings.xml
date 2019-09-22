@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Android labs_2</string>
-    <string name="hello_message">Regarde mon GUI</string>
-    <string name="ButtonText">CLIQUEZ ICI</string>
-    <string name="CheckBox">regarde ça!</string>
-    <string name="Switch">allumer / éteindre</string>
-    <string name="EditText1">Écrivez ici</string>
+    <string name="app_name">Android labs_3</string>
+    <string name="enter_email">Enter your email address</string>
+    <string name="input_email">Type email here</string>
+    <string name="enter_password">Type your password</string>
+    <string name="input_password"></string>
 </resources>
