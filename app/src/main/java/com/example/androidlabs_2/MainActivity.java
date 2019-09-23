@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         emailInput = (EditText) findViewById(R.id.emailEditText);
         SharedPreferences saved = getSharedPreferences("Users", Context.MODE_PRIVATE);
-        String emailBox = saved.getString("Users","");
+        String emailBox = saved.getString("ReserveEmail","");
         emailInput.setText(emailBox);
 
     }
@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         super.onPause();
         SharedPreferences saved = getSharedPreferences("Users", Context.MODE_PRIVATE);
         SharedPreferences.Editor edit = saved.edit();
-        edit.putString("email", emailInput.toString());
+        edit.putString("ReserveEmail", emailInput.getText().toString());
         edit.apply();
     }
     @Override
