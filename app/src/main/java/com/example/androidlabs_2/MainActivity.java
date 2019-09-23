@@ -1,5 +1,6 @@
 package com.example.androidlabs_2;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
@@ -10,60 +11,49 @@ import android.widget.Button;
 import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
-
-
-    private EditText emailEditText;
+    private EditText emailInput;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//        Log.i(TAG, "inside onCreate method");
-//        emailEditText = findViewById(R.id.inputBox);
-//        Button loginButton = (Button)findViewById(R.id.button);
-//        if(loginButton != null){
-//            loginButton.setOnClickListener(clk -> {
-//
-//            });
-//        }
-//
-   }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-//        Log.i(TAG, "inside onStart method");
+        emailInput = (EditText) findViewById(R.id.emailEditText);
+        SharedPreferences saved = getSharedPreferences("Users", Context.MODE_PRIVATE);
+        String emailBox = saved.getString("Users","");
+        emailInput.setText(emailBox);
 
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-//        Log.i(TAG, "inside onResume method");
-
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-//        Log.i(TAG, "inside onStop method");
-
-    }
 
     @Override
     protected void onPause() {
         super.onPause();
-//        Log.i(TAG, "inside onPause method");
-        SharedPreferences pref = getSharedPreferences("")
-//        SharedPreferences.Editor usersEmail
-//        SharedPreferences usersEmail = new Intent(emailEditText.);
-//        Intent autoFillEmail = new Intent(emailEditText.getText().toString());
+        SharedPreferences saved = getSharedPreferences("Users", Context.MODE_PRIVATE);
+        SharedPreferences.Editor edit = saved.edit();
+        edit.putString("email", emailInput.toString());
+        edit.apply();
     }
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+    }
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+    }
+
+
+
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-//        Log.i(TAG, "inside onDestroy method");
 
     }
 }
