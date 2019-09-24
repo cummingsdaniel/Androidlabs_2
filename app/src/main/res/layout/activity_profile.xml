@@ -17,6 +17,13 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:text="@string/your_name" />
+    <EditText
+        android:id="@+id/editTextName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:hint="@string/input_name" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -39,13 +46,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="@string/your_picture" />
+        android:text="@string/your_picture"
+/>
 
-    <Button
-        android:id="@+id/button"
+    <ImageButton
+        android:id="@+id/pic_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"/>
+        android:layout_weight="1"
+        android:src="@android:drawable/picture_frame"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

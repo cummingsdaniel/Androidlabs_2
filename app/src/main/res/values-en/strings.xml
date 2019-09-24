@@ -7,6 +7,7 @@
     <string name="ButtonText">Login</string>
     <string name="your_profile">Your Profile</string>
     <string name="your_name">Your name</string>
+    <string name="input_name">Enter your name</string>
     <string name="your_picture">Your picture</string>
     <string name="please_click">Click the button above to take a picture</string>
 </resources>

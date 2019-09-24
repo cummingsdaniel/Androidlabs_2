@@ -22,12 +22,23 @@ public class MainActivity extends AppCompatActivity {
         String emailBox = saved.getString("ReserveEmail","");
         emailInput.setText(emailBox);
 
+        Button loginButton = (Button) findViewById(R.id.login_button);
+        if (loginButton != null) {
+            loginButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent jumpToProfile = new Intent(MainActivity.this, ProfileActivity.class);
+                    startActivity(jumpToProfile);
+                }
+            });
+        }
     }
 
 
     @Override
     protected void onPause() {
         super.onPause();
+        Log.d("MainActivity","on Pause");
         SharedPreferences saved = getSharedPreferences("Users", Context.MODE_PRIVATE);
         SharedPreferences.Editor edit = saved.edit();
         edit.putString("ReserveEmail", emailInput.getText().toString());
