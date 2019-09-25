@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
@@ -23,11 +24,8 @@ public class ProfileActivity extends AppCompatActivity {
         SharedPreferences savedEmail = getSharedPreferences("Users", MODE_PRIVATE);
         String emailBox = savedEmail.getString("ReserveEmail", "no Value");
         inputEmail.setText(emailBox);
-        ImageButton mImageButton = findViewById(R.id.pic_button);
-        mImageButton.setOnClickListener(clk -> {
-            Intent snap = new Intent();
-            startActivityForResult(snap, 1);
-        });
+        ImageButton mImageButton = (ImageButton) findViewById(R.id.pic_button);
+        mImageButton.setOnClickListener(new View.OnClickListener(new dispatchTakePictureIntent()));
         Log.d("ProfileActivity", "Email="+emailBox);
     }
 
