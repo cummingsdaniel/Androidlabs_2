@@ -25,9 +25,10 @@ public class ProfileActivity extends AppCompatActivity {
         String emailBox = savedEmail.getString("ReserveEmail", "no Value");
         inputEmail.setText(emailBox);
         ImageButton mImageButton = (ImageButton) findViewById(R.id.pic_button);
-        mImageButton.setOnClickListener(clk ->
-                Log.i("hi", "there")
-                );
+        mImageButton.setOnClickListener(clk -> {
+            dispatchTakePictureIntent();
+            Log.i("hi", "there");
+        });
         Log.d("ProfileActivity", "Email="+emailBox);
     }
 

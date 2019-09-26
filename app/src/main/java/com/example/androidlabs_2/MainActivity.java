@@ -24,12 +24,10 @@ public class MainActivity extends AppCompatActivity {
 
         Button loginButton = (Button) findViewById(R.id.login_button);
         if (loginButton != null) {
-            loginButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
+            loginButton.setOnClickListener(v -> {
                     Intent jumpToProfile = new Intent(MainActivity.this, ProfileActivity.class);
                     startActivity(jumpToProfile);
-                }
+
             });
         }
     }
