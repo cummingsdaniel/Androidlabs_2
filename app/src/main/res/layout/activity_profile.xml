@@ -46,8 +46,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="@string/your_picture"
-/>
+        android:text="@string/your_picture" />
 
     <ImageButton
         android:id="@+id/pic_button"
@@ -60,4 +59,12 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:text="@string/please_click" />
+
+    <Button
+        android:id="@+id/start_chat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="@string/go_to_chat" />
+
 </LinearLayout>

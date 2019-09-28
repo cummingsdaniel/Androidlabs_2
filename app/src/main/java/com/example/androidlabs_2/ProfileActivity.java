@@ -8,6 +8,7 @@ import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
@@ -15,7 +16,6 @@ public class ProfileActivity extends AppCompatActivity {
     static final int REQUEST_IMAGE_CAPTURE = 1;
     static final String ACTIVITY_NAME = "PROFILE_ACTIVITY";
     private ImageButton mImageButton;
-
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
@@ -24,6 +24,11 @@ public class ProfileActivity extends AppCompatActivity {
         SharedPreferences savedEmail = getSharedPreferences("Users", MODE_PRIVATE);
         String emailBox = savedEmail.getString("ReserveEmail", "no Value");
         inputEmail.setText(emailBox);
+        Button goToChat = (Button) findViewById(R.id.start_chat);
+        goToChat.setOnClickListener(v ->{
+            Intent jumpToChat = new Intent(ProfileActivity.this, ChatRoomActivity.class);
+            startActivity(jumpToChat);
+        });
         mImageButton = (ImageButton) findViewById(R.id.pic_button);
         mImageButton.setOnClickListener(clk -> {
             dispatchTakePictureIntent();
