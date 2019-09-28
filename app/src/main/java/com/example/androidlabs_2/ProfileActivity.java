@@ -24,7 +24,7 @@ public class ProfileActivity extends AppCompatActivity {
         SharedPreferences savedEmail = getSharedPreferences("Users", MODE_PRIVATE);
         String emailBox = savedEmail.getString("ReserveEmail", "no Value");
         inputEmail.setText(emailBox);
-        ImageButton mImageButton = (ImageButton) findViewById(R.id.pic_button);
+        mImageButton = (ImageButton) findViewById(R.id.pic_button);
         mImageButton.setOnClickListener(clk -> {
             dispatchTakePictureIntent();
             Log.i("hi", "there");
@@ -44,34 +44,38 @@ public class ProfileActivity extends AppCompatActivity {
             Bundle extras = data.getExtras();
             Bitmap imageBitmap = (Bitmap) extras.get("data");
             mImageButton.setImageBitmap(imageBitmap);
-            Log.e(ACTIVITY_NAME, "in function: ");
+            Log.e(ACTIVITY_NAME, "in function: onActivityResult");
         }
     }
     @Override
     protected void onResume() {
         super.onResume();
-        Log.e(ACTIVITY_NAME, "in function: ");
+        Log.e(ACTIVITY_NAME, "in function: onResume");
 
     }
     @Override
     protected void onStart() {
         super.onStart();
-        Log.e(ACTIVITY_NAME, "in function: ");
+        Log.e(ACTIVITY_NAME, "in function: onStart");
 
     }
     @Override
     protected void onStop() {
         super.onStop();
-        Log.e(ACTIVITY_NAME, "in function: ");
+        Log.e(ACTIVITY_NAME, "in function: onStop");
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.e(ACTIVITY_NAME, "in function: onPause ");
 
-
+    }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        Log.e(ACTIVITY_NAME, "in function: ");
+        Log.e(ACTIVITY_NAME, "in function: onDestroy");
     }
 
 }
