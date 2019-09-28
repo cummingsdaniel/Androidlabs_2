@@ -11,5 +11,9 @@
     <string name="input_name">Enter your name</string>
     <string name="ButtonText">Login</string>
     <string name="go_to_chat">Go to chat</string>
+    <string name="send_button">Send</string>
+    <string name="receive_button">Receive</string>
+    <string name="edit_text_area">Type here</string>
+
 
 </resources>
