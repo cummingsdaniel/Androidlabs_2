@@ -14,18 +14,20 @@
         android:layout_alignParentBottom="true">
 
         <Button
+            android:id="@+id/sendButton"
             android:text="@string/send_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/sendButton" />
+             />
 
         <EditText
+            android:id="@+id/messageInput"
             android:layout_width="234dp"
             android:layout_height="wrap_content"
-            android:text="@string/edit_text_area" />
+            android:hint="@string/edit_text_area" />
 
         <Button
-            android:id="@+id/receive_Button"
+            android:id="@+id/receiveButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/receive_button" />

@@ -7,12 +7,12 @@
         android:layout_height="wrap_content"
         android:text="Item here"
         android:id="@+id/itemField"
-        android:layout_align="@id/itemField"/>
+        android:layout_toLeftOf="@id/row_receive"/>
 
-    <TextView
-        android:text="number here"
+    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/numberField"
-        android:layout_alignParentRight="true"/>
+        android:id="@+id/row_receive"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/row_receive"/>
 </RelativeLayout>
