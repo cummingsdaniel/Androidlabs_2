@@ -7,11 +7,8 @@ import android.database.sqlite.SQLiteDatabase;
 public class MyDatabaseOpenHelper extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "MyDatabaseFile";
     public static final int VERSION_NUM = 1;
-    public static final String TABLE_NAME = "Contacts";
+    public static final String MESSAGES = "Messages";
     public static final String COL_ID = "_id";
-    public static final String COL_NAME = "NAME";
-    public static final String COL_EMAIL = "EMAIL";
-
 
     public MyDatabaseOpenHelper(Activity ctx) {
         super(ctx, DATABASE_NAME, null, VERSION_NUM );
@@ -19,14 +16,18 @@ public class MyDatabaseOpenHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE " + TABLE_NAME + "("
-                + COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
-                + COL_NAME + " TEXT, " + COL_EMAIL + " TEXT)");
+        db.execSQL("CREATE TABLE " + MESSAGES + "("
+                + COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT)");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-            db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
+            db.execSQL("DROP TABLE IF EXISTS " + MESSAGES);
             onCreate(db);
+    }
+
+    @Override
+    public void onOpen(SQLiteDatabase db) {
+        super.onOpen(db);
     }
 }
