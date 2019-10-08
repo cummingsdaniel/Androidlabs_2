@@ -1,6 +1,7 @@
 package com.example.androidlabs_2;
 
 import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -46,6 +47,8 @@ public class ChatRoomActivity extends AppCompatActivity {
             mess.setText("");
         });
 
+        MyDatabaseOpenHelper dbOpener = new MyDatabaseOpenHelper(this);
+        SQLiteDatabase db = dbOpener.getWritableDatabase();
     }
     private class MyListAdapter extends BaseAdapter {
 

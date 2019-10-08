@@ -2,13 +2,16 @@ package com.example.androidlabs_2;
 
 public class Message {
     private String chat;
-    private boolean sent;
+    private boolean isRecieved;
+    private long id;
+
+
     public Message() {
 
     }
-    public Message(String s, boolean sent) {
+    public Message(String s, boolean isRecieved) {
         this.chat=s;
-        this.sent=sent;
+        this.isRecieved =isRecieved;
     }
 
     public void setChat(String chat) {
@@ -20,18 +23,18 @@ public class Message {
     }
 
     public boolean isSent() {
-        return sent;
+        return isRecieved;
     }
 
-    public void setSent(boolean sent) {
-        this.sent = sent;
+    public void setSent(boolean isRecieved) {
+        this.isRecieved = isRecieved;
     }
 
     @Override
     public String toString() {
         return "Message{" +
                 "chat='" + chat + '\'' +
-                ", sent=" + sent +
+                ", sent=" + isRecieved +
                 '}';
     }
 }
