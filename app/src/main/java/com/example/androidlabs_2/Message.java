@@ -9,9 +9,10 @@ public class Message {
     public Message() {
 
     }
-    public Message(String s, boolean isSent) {
+    public Message(long id, String s, boolean isSent) {
         this.chat=s;
         this.isSent =isSent;
+        this.id=id;
     }
 
     public void setChat(String chat) {

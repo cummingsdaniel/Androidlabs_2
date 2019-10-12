@@ -1,7 +1,9 @@
 package com.example.androidlabs_2;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,41 +16,99 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.database.Cursor;
+
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class ChatRoomActivity extends AppCompatActivity {
     ArrayList<Message> chat;
     BaseAdapter theAdapter;
+    static final String ACTIVITY_NAME = "CHATROOM_ACTIVITY";
+
+    public void printCursor(Cursor c) {
+        Log.i(ACTIVITY_NAME, "version number: " + MyDatabaseOpenHelper.VERSION_NUM);
+        Log.i(ACTIVITY_NAME, "Number of columns in curser" +c.getColumnCount());
+        Log.i(ACTIVITY_NAME, "Name of Column in curser"+ Arrays.toString(c.getColumnNames()));
+        Log.i(ACTIVITY_NAME, "Number of results in curser: " +c.getCount());
+
+        int idColIndex = c.getColumnIndex(MyDatabaseOpenHelper.COL_ID);
+        int messageColIndex = c.getColumnIndex(MyDatabaseOpenHelper.COL_MESSAGE);
+        int isSentColIndex = c.getColumnIndex(MyDatabaseOpenHelper.IS_SENT);
+
+        while(c.moveToNext() == true) {
+            String message = c.getString(messageColIndex);
+            Boolean isSent = Boolean.parseBoolean(c.getString(isSentColIndex));
+            long idCol = c.getLong(idColIndex);
+
+            Log.i(ACTIVITY_NAME, "id= "+idCol+" "+message+" " + isSent);
+            //add Content to the array
+        }
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat_room);
         chat = new ArrayList<>();
-        EditText mess = (EditText) findViewById(R.id.messageInput);
+        EditText messageTextEdit = (EditText) findViewById(R.id.messageInput);
         ListView listings = findViewById(R.id.theList);
         listings.setAdapter(theAdapter = new MyListAdapter());
+
+        //get data base
+        MyDatabaseOpenHelper dbOpener = new MyDatabaseOpenHelper(this);
+        SQLiteDatabase db = dbOpener.getWritableDatabase();
+
+        //making a list of columes
+        String [] columnsArray = {MyDatabaseOpenHelper.COL_ID, MyDatabaseOpenHelper.COL_MESSAGE, MyDatabaseOpenHelper.IS_SENT};
+        //.query is a getter, it gets query from database
+        Cursor resultsCursor = db.query(false, MyDatabaseOpenHelper.TABLE_NAME, columnsArray, null, null, null, null, null, null);
+
+        printCursor(resultsCursor);
+
+        int idColIndex = resultsCursor.getColumnIndex(MyDatabaseOpenHelper.COL_ID);
+        int messageColIndex = resultsCursor.getColumnIndex(MyDatabaseOpenHelper.COL_MESSAGE);
+        int isSentColIndex = resultsCursor.getColumnIndex(MyDatabaseOpenHelper.IS_SENT);
+
+        while(resultsCursor.moveToNext() == true) {
+            String message = resultsCursor.getString(messageColIndex);
+            Boolean isSent = Boolean.parseBoolean(resultsCursor.getString(isSentColIndex));
+            long idCol = resultsCursor.getLong(idColIndex);
+
+            //add Content to the array
+            chat.add(new Message(idCol,message, isSent));
+        }
+
         Button sendButton = findViewById(R.id.sendButton);
         Button receiveButton = findViewById(R.id.receiveButton);
 
         sendButton.setOnClickListener(v -> {
-            Log.d("sendButtonClicked", "bbbb");
-            Message mleft = new Message(mess.getText().toString(), true);
+
+            ContentValues newRowValues = new ContentValues();
+            String userInputMessage = messageTextEdit.getText().toString();
+            newRowValues.put(MyDatabaseOpenHelper.COL_MESSAGE, userInputMessage);
+            newRowValues.put(MyDatabaseOpenHelper.IS_SENT, "true");
+            long newId = db.insert(MyDatabaseOpenHelper.TABLE_NAME, null, newRowValues);
+            Message mleft = new Message(newId, userInputMessage, true);
             chat.add(mleft);
             theAdapter.notifyDataSetChanged();
-            mess.setText("");
+            messageTextEdit.setText("");
         });
 
         receiveButton.setOnClickListener(v -> {
             Log.d("RecButtonClicked", "bbbb");
-            Message mright = new Message(mess.getText().toString(), false);
+            ContentValues newRowValues = new ContentValues();
+            String userInputMessage = messageTextEdit.getText().toString();
+            newRowValues.put(MyDatabaseOpenHelper.COL_MESSAGE, userInputMessage);
+            newRowValues.put(MyDatabaseOpenHelper.IS_SENT, "false");
+            long newId = db.insert(MyDatabaseOpenHelper.TABLE_NAME, null, newRowValues);
+
+            Message mright = new Message(newId, userInputMessage, false);
             chat.add(mright);
             theAdapter.notifyDataSetChanged();
-            mess.setText("");
+            messageTextEdit.setText("");
         });
 
-        MyDatabaseOpenHelper dbOpener = new MyDatabaseOpenHelper(this);
-        SQLiteDatabase db = dbOpener.getWritableDatabase();
     }
     private class MyListAdapter extends BaseAdapter {
 

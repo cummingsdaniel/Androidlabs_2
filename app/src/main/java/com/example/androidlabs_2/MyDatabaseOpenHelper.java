@@ -5,11 +5,11 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteDatabase;
 
 public class MyDatabaseOpenHelper extends SQLiteOpenHelper {
-    public static final String DATABASE_NAME = "MyDatabaseFile";
+    public static final String DATABASE_NAME = "MessagesDatabase";
     public static final int VERSION_NUM = 1;
     public static final String TABLE_NAME = "Messages";
     public static final String COL_ID = "_id";
-    public static final String COL_MESSAGE = "NAME";
+    public static final String COL_MESSAGE = "Colume_Messege";
     public static final String IS_SENT = "IS_SENT";
 
 
@@ -18,7 +18,7 @@ public class MyDatabaseOpenHelper extends SQLiteOpenHelper {
     }
 
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE " + TABLE_NAME + "( " + COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + COL_MESSAGE + " TEXT, " + IS_SENT + " INTEGER)");
+        db.execSQL("CREATE TABLE " + TABLE_NAME + "( " + COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + COL_MESSAGE + " TEXT, " + IS_SENT + " TEXT)");
     }
 
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
