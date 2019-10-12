@@ -28,8 +28,9 @@ public class ChatRoomActivity extends AppCompatActivity {
     static final String ACTIVITY_NAME = "CHATROOM_ACTIVITY";
 
     public void printCursor(Cursor c) {
+c.moveToFirst();
         Log.i(ACTIVITY_NAME, "version number: " + MyDatabaseOpenHelper.VERSION_NUM);
-        Log.i(ACTIVITY_NAME, "Number of columns in curser" +c.getColumnCount());
+        Log.i(ACTIVITY_NAME, "Number of columns in curser: " +c.getColumnCount());
         Log.i(ACTIVITY_NAME, "Name of Column in curser"+ Arrays.toString(c.getColumnNames()));
         Log.i(ACTIVITY_NAME, "Number of results in curser: " +c.getCount());
 
@@ -37,7 +38,7 @@ public class ChatRoomActivity extends AppCompatActivity {
         int messageColIndex = c.getColumnIndex(MyDatabaseOpenHelper.COL_MESSAGE);
         int isSentColIndex = c.getColumnIndex(MyDatabaseOpenHelper.IS_SENT);
 
-        while(c.moveToNext() == true) {
+        while(c.moveToNext()) {
             String message = c.getString(messageColIndex);
             Boolean isSent = Boolean.parseBoolean(c.getString(isSentColIndex));
             long idCol = c.getLong(idColIndex);
@@ -69,14 +70,14 @@ public class ChatRoomActivity extends AppCompatActivity {
         int idColIndex = resultsCursor.getColumnIndex(MyDatabaseOpenHelper.COL_ID);
         int messageColIndex = resultsCursor.getColumnIndex(MyDatabaseOpenHelper.COL_MESSAGE);
         int isSentColIndex = resultsCursor.getColumnIndex(MyDatabaseOpenHelper.IS_SENT);
-
+        resultsCursor.moveToFirst();
         while(resultsCursor.moveToNext() == true) {
             String message = resultsCursor.getString(messageColIndex);
             Boolean isSent = Boolean.parseBoolean(resultsCursor.getString(isSentColIndex));
             long idCol = resultsCursor.getLong(idColIndex);
 
             //add Content to the array
-            chat.add(new Message(idCol,message, isSent));
+            chat.add(new Message(idCol, message, isSent));
         }
 
         Button sendButton = findViewById(R.id.sendButton);
@@ -152,6 +153,11 @@ Log.d("gggggggg",getItem(p).getChat());
     @Override
     protected void onResume() {
         super.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
     }
 }
 
