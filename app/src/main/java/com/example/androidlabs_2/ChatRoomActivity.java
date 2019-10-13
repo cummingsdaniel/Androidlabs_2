@@ -28,19 +28,18 @@ public class ChatRoomActivity extends AppCompatActivity {
     static final String ACTIVITY_NAME = "CHATROOM_ACTIVITY";
 
     public void printCursor(Cursor c) {
-c.moveToFirst();
         Log.i(ACTIVITY_NAME, "version number: " + MyDatabaseOpenHelper.VERSION_NUM);
-        Log.i(ACTIVITY_NAME, "Number of columns in curser: " +c.getColumnCount());
+        Log.i(ACTIVITY_NAME, "Number of columns in curser" +c.getColumnCount());
         Log.i(ACTIVITY_NAME, "Name of Column in curser"+ Arrays.toString(c.getColumnNames()));
         Log.i(ACTIVITY_NAME, "Number of results in curser: " +c.getCount());
-
+        c.moveToFirst();
         int idColIndex = c.getColumnIndex(MyDatabaseOpenHelper.COL_ID);
         int messageColIndex = c.getColumnIndex(MyDatabaseOpenHelper.COL_MESSAGE);
         int isSentColIndex = c.getColumnIndex(MyDatabaseOpenHelper.IS_SENT);
 
-        while(c.moveToNext()) {
+        while(c.moveToNext() == true) {
             String message = c.getString(messageColIndex);
-            Boolean isSent = Boolean.parseBoolean(c.getString(isSentColIndex));
+            Boolean isSent = c.getLong(isSentColIndex)==1?true:false;
             long idCol = c.getLong(idColIndex);
 
             Log.i(ACTIVITY_NAME, "id= "+idCol+" "+message+" " + isSent);
@@ -73,11 +72,11 @@ c.moveToFirst();
         resultsCursor.moveToFirst();
         while(resultsCursor.moveToNext() == true) {
             String message = resultsCursor.getString(messageColIndex);
-            Boolean isSent = Boolean.parseBoolean(resultsCursor.getString(isSentColIndex));
+            Boolean isSent = resultsCursor.getLong(isSentColIndex)==1?true:false;
             long idCol = resultsCursor.getLong(idColIndex);
 
             //add Content to the array
-            chat.add(new Message(idCol, message, isSent));
+            chat.add(new Message(idCol,message, isSent));
         }
 
         Button sendButton = findViewById(R.id.sendButton);
@@ -88,7 +87,7 @@ c.moveToFirst();
             ContentValues newRowValues = new ContentValues();
             String userInputMessage = messageTextEdit.getText().toString();
             newRowValues.put(MyDatabaseOpenHelper.COL_MESSAGE, userInputMessage);
-            newRowValues.put(MyDatabaseOpenHelper.IS_SENT, "true");
+            newRowValues.put(MyDatabaseOpenHelper.IS_SENT, 1);
             long newId = db.insert(MyDatabaseOpenHelper.TABLE_NAME, null, newRowValues);
             Message mleft = new Message(newId, userInputMessage, true);
             chat.add(mleft);
@@ -101,7 +100,7 @@ c.moveToFirst();
             ContentValues newRowValues = new ContentValues();
             String userInputMessage = messageTextEdit.getText().toString();
             newRowValues.put(MyDatabaseOpenHelper.COL_MESSAGE, userInputMessage);
-            newRowValues.put(MyDatabaseOpenHelper.IS_SENT, "false");
+            newRowValues.put(MyDatabaseOpenHelper.IS_SENT, 0);
             long newId = db.insert(MyDatabaseOpenHelper.TABLE_NAME, null, newRowValues);
 
             Message mright = new Message(newId, userInputMessage, false);
@@ -128,14 +127,14 @@ c.moveToFirst();
             Log.d("fdfggdg", chat.get(p).toString());
 
 
-                if(chat.get(p).isSent()) {
-                    thisRow = inflater.inflate(R.layout.table_row_left, null);
-                }
-                else if(!chat.get(p).isSent()){
-                    thisRow = inflater.inflate(R.layout.table_row_right, null);
-                }
+            if(chat.get(p).isSent()) {
+                thisRow = inflater.inflate(R.layout.table_row_left, null);
+            }
+            else if(!chat.get(p).isSent()){
+                thisRow = inflater.inflate(R.layout.table_row_right, null);
+            }
 
-Log.d("gggggggg",getItem(p).getChat());
+            Log.d("gggggggg",getItem(p).getChat());
             TextView itemField = thisRow.findViewById(R.id.itemField);
             itemField.setText(getItem(p).getChat());
 
@@ -153,11 +152,6 @@ Log.d("gggggggg",getItem(p).getChat());
     @Override
     protected void onResume() {
         super.onResume();
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
     }
 }
 
