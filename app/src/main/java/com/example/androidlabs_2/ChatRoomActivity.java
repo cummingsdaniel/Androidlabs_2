@@ -72,6 +72,7 @@ public class ChatRoomActivity extends AppCompatActivity {
         resultsCursor.moveToFirst();
         while(resultsCursor.moveToNext() == true) {
             String message = resultsCursor.getString(messageColIndex);
+            //ternary operator
             Boolean isSent = resultsCursor.getLong(isSentColIndex)==1?true:false;
             long idCol = resultsCursor.getLong(idColIndex);
 
