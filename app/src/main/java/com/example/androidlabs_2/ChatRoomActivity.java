@@ -113,14 +113,19 @@ c.moveToFirst();
     }
     private class MyListAdapter extends BaseAdapter {
 
-        public int getCount() {  return chat.size();  } //This function tells how many objects to show
+        public int getCount() {
+            return chat.size();
+        } //This function tells how many objects to show
 
-        public Message getItem(int position) { return chat.get(position);  }  //This returns the string at position p
+        public Message getItem(int position) {
+            return chat.get(position);
+        }  //This returns the string at position p
 
-        public long getItemId(int p) { return p; } //This returns the database id of the item at position p
+        public long getItemId(int p) {
+            return p;
+        } //This returns the database id of the item at position p
 
-        public View getView(int p, View recycled, ViewGroup parent)
-        {
+        public View getView(int p, View recycled, ViewGroup parent) {
 
             LayoutInflater inflater = getLayoutInflater();
             View thisRow = null;
@@ -135,12 +140,9 @@ c.moveToFirst();
                     thisRow = inflater.inflate(R.layout.table_row_right, null);
                 }
 
-Log.d("gggggggg",getItem(p).getChat());
+            Log.d("gggggggg",getItem(p).getChat());
             TextView itemField = thisRow.findViewById(R.id.itemField);
             itemField.setText(getItem(p).getChat());
-
-
-
             return thisRow;
         }
     }
