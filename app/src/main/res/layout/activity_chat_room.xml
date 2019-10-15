@@ -7,32 +7,31 @@
         android:id="@+id/theList"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/typeField"/>
-    <LinearLayout
-        android:id="@+id/typeField"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_alignParentBottom="true">
+        android:layout_above="@id/sendButton"/>
 
         <Button
             android:id="@+id/sendButton"
             android:text="@string/send_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-             />
+            android:layout_alignParentBottom="true"/>
 
         <EditText
             android:id="@+id/messageInput"
             android:layout_width="234dp"
             android:layout_height="wrap_content"
-            android:hint="@string/edit_text_area" />
+            android:hint="@string/edit_text_area"
+            android:layout_toRightOf="@id/sendButton"
+            android:layout_toLeftOf="@id/receiveButton"
+            android:layout_alignParentBottom="true"/>
 
         <Button
             android:id="@+id/receiveButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/receive_button" />
-    </LinearLayout>
+            android:text="@string/receive_button"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"/>
+
 
 </RelativeLayout>
