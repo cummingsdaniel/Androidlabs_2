@@ -24,6 +24,13 @@ public class ProfileActivity extends AppCompatActivity {
         SharedPreferences savedEmail = getSharedPreferences("Users", MODE_PRIVATE);
         String emailBox = savedEmail.getString("ReserveEmail", "no Value");
         inputEmail.setText(emailBox);
+
+        Button openWeather = (Button) findViewById(R.id.open_weatherforecast);
+        openWeather.setOnClickListener(w ->{
+            Intent goToWeather = new Intent(ProfileActivity.this, WeatherForecast.class);
+            startActivity(goToWeather);
+        });
+
         Button goToChat = (Button) findViewById(R.id.start_chat);
         goToChat.setOnClickListener(v ->{
             Intent jumpToChat = new Intent(ProfileActivity.this, ChatRoomActivity.class);

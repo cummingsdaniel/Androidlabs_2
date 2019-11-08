@@ -14,6 +14,8 @@
     <string name="send_button">Send</string>
     <string name="receive_button">Receive</string>
     <string name="edit_text_area">Type here</string>
+    <string name="open_weatherForecast">Prévisions météorologiques</string>
+
 
     <string name="please_click">Click the button above to take a picture</string>
 </resources>
