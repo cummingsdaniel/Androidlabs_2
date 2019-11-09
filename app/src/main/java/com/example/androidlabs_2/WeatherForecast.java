@@ -100,7 +100,11 @@ public class WeatherForecast extends AppCompatActivity {
                             break;
                     }
                     xpp.next(); // move the pointer to next XML element
-                   // Log.i(currentTemperature, min, max);
+                    Log.d("temp", currentTemperature);
+                    Log.d("temp", min);
+                    Log.d("temp", max);
+
+
                 }
             }
 
