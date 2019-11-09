@@ -12,12 +12,49 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:srcCompat="@mipmap/ic_launcher"
-        tools:layout_editor_absoluteX="200dp"
-        tools:layout_editor_absoluteY="200dp" />
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="120dp" />
 
     <TextView
         android:id="@+id/currentTempTextView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-    
+        android:layout_height="wrap_content"
+        android:hint="Current Temp"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="212dp" />
+
+    <TextView
+        android:id="@+id/minTempTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Min Temp"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="278dp" />
+
+    <TextView
+        android:id="@+id/maxTempTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Max Temp"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="346dp" />
+
+    <TextView
+        android:id="@+id/uvRatingTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="UV Rating"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="396dp" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="182dp"
+        tools:layout_editor_absoluteY="466dp"
+        tools:visibility="invisible" />
+
+
 </android.support.constraint.ConstraintLayout>
