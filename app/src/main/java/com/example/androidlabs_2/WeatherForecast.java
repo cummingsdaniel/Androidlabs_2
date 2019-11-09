@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -89,6 +90,11 @@ public class WeatherForecast extends AppCompatActivity {
                                 max = xpp.getAttributeValue(null, "max");
                                 publishProgress(25, 50, 75);
                             }
+                            else if(tagName.equals("wind")) {
+                                xpp.next();
+                                wind = xpp.getAttributeValue(null, "value");
+                                publishProgress(25, 50, 75);
+                            }
                             else if(tagName.equals("weather")) {
                                 String weatherIcon = xpp.getAttributeValue(null, "icon");
                                 publishProgress(25, 50, 75);
@@ -124,6 +130,7 @@ public class WeatherForecast extends AppCompatActivity {
         @Override                       //Type 2
         protected void onProgressUpdate(Integer... values) {
             super.onProgressUpdate(values);
+            //Update GUI stuff only:
         }
     }
 }
