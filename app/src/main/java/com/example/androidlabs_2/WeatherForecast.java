@@ -4,6 +4,7 @@ import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -24,11 +25,20 @@ import static org.xmlpull.v1.XmlPullParser.START_TAG;
 import static org.xmlpull.v1.XmlPullParser.TEXT;
 
 public class WeatherForecast extends AppCompatActivity {
-    public String wind;
-    public String UV;
-    public String minTemperature;
-    public String maxTemperature;
-    public Bitmap picOfCurrentWeather;
+      ProgressBar progressBar;
+      String wind;
+      String uv;
+      String currentTemperature;
+      String min;
+      String max;
+      Bitmap picOfCurrentWeather;
+
+
+//    private static final String TEMPERATURE;
+//    private static final String UV;
+//    private static final String MIN_TEMPERATURE;
+//    private static final String MAX_TEMPERATURE;
+//    private Bitmap picOfCurrentWeather;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,7 +48,7 @@ public class WeatherForecast extends AppCompatActivity {
         TextView minTempTextView = findViewById(R.id.minTempTextView);
         TextView maxTempTextView = findViewById(R.id.maxTempTextView);
         TextView uvRatingTextView = findViewById(R.id.uvRatingTextView);
-        ProgressBar progressBar = findViewById(R.id.progressBar);
+        progressBar = findViewById(R.id.progressBar);
         progressBar.setVisibility(View.VISIBLE);
 
         ForecastQuery startForecast = new ForecastQuery();
@@ -50,7 +60,7 @@ public class WeatherForecast extends AppCompatActivity {
         @Override
         protected String doInBackground(String... strings) {
             String ret = null;
-            String queryURL = "http://torunski.ca/CST2335_XML.xml";
+            String queryURL = "hhttp://api.openweathermap.org/data/2.5/uvi?appid=7e943c97096a9784391a981c4d878b22&lat=45.348945&lon=-75.759389";
 
             try {       // Connect to the server:
                 URL url = new URL(queryURL);
@@ -71,8 +81,17 @@ public class WeatherForecast extends AppCompatActivity {
                     {
                         case START_TAG:         //This is a start tag < ... >
                             String tagName = xpp.getName(); // What kind of tag?
-                            if(tagName.equals(""))
-                            {
+                            if(tagName.equals("temperature")) {
+                                currentTemperature = xpp.getAttributeValue(null, "value");  //What is the String associated with message?
+                                publishProgress(25, 50, 75);
+                                min = xpp.getAttributeValue(null, "min");
+                                publishProgress(25, 50, 75);
+                                max = xpp.getAttributeValue(null, "max");
+                                publishProgress(25, 50, 75);
+                            }
+                            else if(tagName.equals("weather")) {
+                                String weatherIcon = xpp.getAttributeValue(null, "icon");
+                                publishProgress(25, 50, 75);
                             }
                             break;
                         case END_TAG:           //This is an end tag: </ ... >
@@ -81,13 +100,26 @@ public class WeatherForecast extends AppCompatActivity {
                             break;
                     }
                     xpp.next(); // move the pointer to next XML element
+                   // Log.i(currentTemperature, min, max);
                 }
             }
+
             catch(MalformedURLException mfe){ ret = "Malformed URL exception"; }
             catch(IOException ioe)          { ret = "IO Exception. Is the Wifi connected?";}
             catch(XmlPullParserException pe){ ret = "XML Pull exception. The XML is not properly formed" ;}
             //What is returned here will be passed as a parameter to onPostExecute:
             return ret;
+        }
+
+        @Override                   //Type 3
+        protected void onPostExecute(String sentFromDoInBackground) {
+            super.onPostExecute(sentFromDoInBackground);
+            //update GUI Stuff:
+        }
+
+        @Override                       //Type 2
+        protected void onProgressUpdate(Integer... values) {
+            super.onProgressUpdate(values);
         }
     }
 }
