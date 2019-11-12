@@ -178,7 +178,7 @@ public class WeatherForecast extends AppCompatActivity {
                     String result = sb.toString();
                     JSONObject jObject = new JSONObject(result);
                     double value = jObject.getDouble("value");
-
+                    uv = String.valueOf(value);
 
                 }
 
