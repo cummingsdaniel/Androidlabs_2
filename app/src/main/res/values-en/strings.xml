@@ -15,6 +15,7 @@
     <string name="receive_button">Receive</string>
     <string name="edit_text_area">Type here</string>
     <string name="open_weatherForecast">Open Snowcast</string>
+    <string name="open_toolbarPage">go to toolbar page, buddy</string>
 
 
 </resources>

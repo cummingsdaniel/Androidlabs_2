@@ -25,6 +25,12 @@ public class ProfileActivity extends AppCompatActivity {
         String emailBox = savedEmail.getString("ReserveEmail", "no Value");
         inputEmail.setText(emailBox);
 
+        Button toolbarPage = (Button) findViewById(R.id.open_toolbar);
+        toolbarPage.setOnClickListener(t ->{
+            Intent goToToolbarPage = new Intent(ProfileActivity.this, TestToolBar.class);
+            startActivity(goToToolbarPage);
+        });
+
         Button openWeather = (Button) findViewById(R.id.open_weatherforecast);
         openWeather.setOnClickListener(w ->{
             Intent goToWeather = new Intent(ProfileActivity.this, WeatherForecast.class);
