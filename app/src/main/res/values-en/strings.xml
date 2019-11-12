@@ -16,6 +16,8 @@
     <string name="edit_text_area">Type here</string>
     <string name="open_weatherForecast">Open Snowcast</string>
     <string name="open_toolbarPage">go to toolbar page, buddy</string>
-
+    <string name="item_options">options, guy</string>
+    <string name="open_stuff">fart</string>
+    <string name="open_star">meh</string>
 
 </resources>

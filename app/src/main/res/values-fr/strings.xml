@@ -16,7 +16,9 @@
     <string name="edit_text_area">Type here</string>
     <string name="open_weatherForecast">Prévisions météorologiques</string>
     <string name="open_toolbarPage">Aller à la page de la barre d\'outils</string>
-
+    <string name="item_options">les options</string>
+    <string name="open_stuff">des trucs</string>
+    <string name="open_star">c\'est une star</string>
 
     <string name="please_click">Click the button above to take a picture</string>
 </resources>
