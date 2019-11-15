@@ -8,9 +8,9 @@
         app:showAsAction="always"/>
 
     <item android:id="@+id/search_item"
-        app:actionViewClass="android.widget.SearchView"
+        app:actionViewClass="androidx.appcompat.widget.SearchView"
         android:icon="@android:drawable/ic_search_category_default"
-        app:showAsAction="always|collapseActionView"
+        app:showAsAction="ifRoom|collapseActionView"
         android:title="@string/open_stuff"/>
     <item
         android:id="@+id/item2"
