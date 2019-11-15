@@ -1,11 +1,14 @@
 package com.example.androidlabs_2;
 
+import android.content.DialogInterface;
+import android.view.View;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
@@ -19,7 +22,7 @@ public class TestToolBar extends AppCompatActivity {
         setContentView(R.layout.activity_test_tool_bar);
         Toolbar myToolbar = findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
-        
+
     }
 
     @Override
@@ -27,20 +30,20 @@ public class TestToolBar extends AppCompatActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu, menu);
 
-        return super.onCreateOptionsMenu(menu);
+        return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch(item.getItemId()) {
-            case R.id.item1:
-                Toast.makeText(this, "You clicked on the overflow menu", Toast.LENGTH_SHORT)
-                        .show();
-                break;
-
-                default:
-                break;
-        }
+//        switch(item.getItemId()) {
+//            case R.id.item1:
+//                Toast.makeText(this, "You clicked on the overflow menu", Toast.LENGTH_SHORT)
+//                        .show();
+//                break;
+//
+//                default:
+//                break;
+//        }
         return true;
     }
 }
