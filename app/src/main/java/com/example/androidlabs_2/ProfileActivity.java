@@ -57,15 +57,15 @@ public class ProfileActivity extends AppCompatActivity {
             startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
         }
     }
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
-            Bundle extras = data.getExtras();
-            Bitmap imageBitmap = (Bitmap) extras.get("data");
-            mImageButton.setImageBitmap(imageBitmap);
-            Log.e(ACTIVITY_NAME, "in function: onActivityResult");
-        }
-    }
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+//            Bundle extras = data.getExtras();
+//            Bitmap imageBitmap = (Bitmap) extras.get("data");
+//            mImageButton.setImageBitmap(imageBitmap);
+//            Log.e(ACTIVITY_NAME, "in function: onActivityResult");
+//        }
+//    }
     @Override
     protected void onResume() {
         super.onResume();
