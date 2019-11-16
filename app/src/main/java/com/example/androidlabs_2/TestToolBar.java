@@ -35,15 +35,15 @@ public class TestToolBar extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-//        switch(item.getItemId()) {
-//            case R.id.item1:
-//                Toast.makeText(this, "You clicked on the overflow menu", Toast.LENGTH_SHORT)
-//                        .show();
-//                break;
-//
-//                default:
-//                break;
-//        }
+        switch(item.getItemId()) {
+            case R.id.item1:
+                Toast.makeText(this, "You clicked on the overflow menu", Toast.LENGTH_SHORT)
+                        .show();
+                break;
+
+                default:
+                break;
+        }
         return true;
     }
 }
