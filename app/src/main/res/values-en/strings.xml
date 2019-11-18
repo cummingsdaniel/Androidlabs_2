@@ -19,5 +19,5 @@
     <string name="item_options">options, guy</string>
     <string name="open_stuff">fart</string>
     <string name="open_star">meh</string>
-
+    <string name="new_message">This is the initial message</string>
 </resources>

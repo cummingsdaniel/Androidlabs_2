@@ -19,6 +19,6 @@
     <string name="item_options">les options</string>
     <string name="open_stuff">des trucs</string>
     <string name="open_star">c\'est une star</string>
-
+    <string name="new_message">This is the initial message</string>
     <string name="please_click">Click the button above to take a picture</string>
 </resources>

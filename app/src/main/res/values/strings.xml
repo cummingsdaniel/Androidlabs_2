@@ -19,6 +19,7 @@
     <string name="item_options">options</string>
     <string name="open_stuff">stuff</string>
     <string name="open_star">its a star</string>
+    <string name="new_message">This is the initial message</string>
 
 
 </resources>
