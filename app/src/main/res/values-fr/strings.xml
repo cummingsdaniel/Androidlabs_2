@@ -21,4 +21,7 @@
     <string name="open_star">c\'est une star</string>
     <string name="new_message">This is the initial message</string>
     <string name="please_click">Click the button above to take a picture</string>
+    <string name="unique_title">smaeh</string>
+    <string name="very_unique_title">blah</string>
+    <string name="super_mega_ultra_unique_title">meh</string>
 </resources>

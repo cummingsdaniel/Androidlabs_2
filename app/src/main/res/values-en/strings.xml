@@ -20,4 +20,7 @@
     <string name="open_stuff">fart</string>
     <string name="open_star">meh</string>
     <string name="new_message">This is the initial message</string>
+    <string name="unique_title">Hey, buddy</string>
+    <string name="very_unique_title">I\'m not yo buddy guy</string>
+    <string name="super_mega_ultra_unique_title">I\'m not yo guy, fwiend</string>
 </resources>

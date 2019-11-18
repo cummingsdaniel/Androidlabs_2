@@ -20,6 +20,8 @@
     <string name="open_stuff">stuff</string>
     <string name="open_star">its a star</string>
     <string name="new_message">This is the initial message</string>
-
+    <string name="unique_title">Hey</string>
+    <string name="very_unique_title">What\'s</string>
+    <string name="super_mega_ultra_unique_title">Up</string>
 
 </resources>
