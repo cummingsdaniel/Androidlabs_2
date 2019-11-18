@@ -17,14 +17,20 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 
+import com.google.android.material.snackbar.Snackbar;
+
 public class TestToolBar extends AppCompatActivity {
     public String newMessage = "";
+    public Snackbar sb;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_tool_bar);
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
+
+        sb = Snackbar.make(myToolbar, "Go Back", Snackbar.LENGTH_LONG)
+                .setAction("Back", e -> finish());
 
     }
 
@@ -47,6 +53,7 @@ public class TestToolBar extends AppCompatActivity {
             case R.id.item3:
                 if(newMessage.equals("")) {
                     newMessage = "This is the initial message";
+                    sb.show();
                 }
                 Toast.makeText(this, newMessage, Toast.LENGTH_SHORT).show();
                 break;
